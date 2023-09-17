@@ -53,15 +53,8 @@ export const register = async (req, res) => {
     return res.status(409).json({"message":"User already exists"})
 }
 
-export const updateUser = async (req, res) => {
-    const result = validationResult(req)
-    if (!result.isEmpty()) {
-        return res.send({ errors: result.array() });
-    }
-    await User.updateOne({ _id: req.uid }, { "username": req.body.newname })
-        .then(() => res.status(200).send({ "message": "Username Updated Succesfully"}))
-        .catch((error) => res.status(400).json({ error }))
-}
+
+
 export const resetPass = async (req, res) => {
     const result = validationResult(req)
     if (!result.isEmpty()) {
@@ -82,6 +75,4 @@ export const resetPass = async (req, res) => {
     return res.status(200).json({"message":"password updated successfully"})
 
 }
-export const deleteAccount = async (req, res) => {
 
-}
