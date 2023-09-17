@@ -1,6 +1,5 @@
 import { User, Blog } from "../models/Models.js";
 import bcrypt from "bcrypt";
-import { config } from "dotenv";
 import { validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 
