@@ -15,7 +15,7 @@ const app = express()
 //  env file
 dotenv.config()
 
-const allowedOrigins = ['writeon-4e1e7.web.app','writeon-4e1e7.firebaseapp.com'];
+const allowedOrigins = ['https://writeon-4e1e7.web.app','https://writeon-4e1e7.firebaseapp.com'];
 
 const corsOptions = {
   origin: function (origin, callback) {
