@@ -31,7 +31,7 @@ const corsOptions = {
 //  middle ware
 app.use(express.json())
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'writeon-4e1e7.web.app'||'writeon-4e1e7.firebaseapp.com');
+  res.header('Access-Control-Allow-Origin', 'writeon-4e1e7.web.app');
   // Add other CORS headers if needed
   next();
 });
