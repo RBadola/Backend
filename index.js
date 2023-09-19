@@ -15,18 +15,18 @@ const app = express()
 //  env file
 dotenv.config()
 
-// const allowedOrigins = ['https://writeon-4e1e7.web.app','https://writeon-4e1e7.firebaseapp.com','http://localhost:5173/'];
+const allowedOrigins = ['https://writeon-4e1e7.web.app','https://writeon-4e1e7.firebaseapp.com','http://localhost:5173/'];
 
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//     credentials: true,
-//   };
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+    credentials: true,
+  };
 
 //  connect to database
 mongoose.set("strictQuery", false);
@@ -39,7 +39,7 @@ mongoose.connect(process.env.CONNECT_STRING).then(() => {
 
 //  middle ware
 app.use(express.json())
-app.use(cors({origin:true,credentials:true}))
+app.use(cors(corsOptions))
 app.use(cookieParser(process.env.SECRET))
 
 // routes
