@@ -26,7 +26,7 @@ const corsOptions = {
     }
   },
     credentials: true,
-  Access-Control-Allow-Origin:true,
+  
 };
 //  middle ware
 app.use(express.json())
