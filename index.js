@@ -15,9 +15,21 @@ const app = express()
 //  env file
 dotenv.config()
 
+const allowedOrigins = ['writeon-4e1e7.web.app','writeon-4e1e7.firebaseapp.com'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+    credentials: true
+};
 //  middle ware
 app.use(express.json())
-app.use(cors({origin:true,credentials:true}))
+app.use(cors(corsOptions}))
 app.use(cookieParser(process.env.SECRET))
 
 //  connect to database
