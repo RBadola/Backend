@@ -25,7 +25,8 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-    credentials: true
+    credentials: true,
+  Access-Control-Allow-Origin:true,
 };
 //  middle ware
 app.use(express.json())
