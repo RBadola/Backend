@@ -30,8 +30,12 @@ const corsOptions = {
 };
 //  middle ware
 app.use(express.json())
-
 app.use(cors(corsOptions))
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'writeon-4e1e7.web.app');
+  // Add other CORS headers if needed
+  next();
+});
 app.use(cookieParser(process.env.SECRET))
 
 //  connect to database
@@ -45,18 +49,6 @@ mongoose.connect(process.env.CONNECT_STRING).then(() => {
 
 
 // routes
-app.use('/api/authRoutes/',function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'writeon-4e1e7.web.app');
-  // Add other CORS headers if needed
-  next();
-},AuthRoutes)
-app.use('/api/blogRoutes/',function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'writeon-4e1e7.web.app');
-  // Add other CORS headers if needed
-  next();
-},BlogRoutes)
-app.use('/api/loggedUser/',function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'writeon-4e1e7.web.app');
-  // Add other CORS headers if needed
-  next();
-},LoggedRoutes)
+app.use('/api/authRoutes/',AuthRoutes)
+app.use('/api/blogRoutes/',BlogRoutes)
+app.use('/api/loggedUser/',LoggedRoutes)
