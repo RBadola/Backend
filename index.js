@@ -30,12 +30,12 @@ const corsOptions = {
 };
 //  middle ware
 app.use(express.json())
-app.use(cors(corsOptions))
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'writeon-4e1e7.web.app');
+  res.header('Access-Control-Allow-Origin', 'https://writeon-4e1e7.web.app');
   // Add other CORS headers if needed
   next();
 });
+app.use(cors(corsOptions))
 app.use(cookieParser(process.env.SECRET))
 
 //  connect to database
