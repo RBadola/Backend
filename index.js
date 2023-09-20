@@ -21,8 +21,8 @@ const corsOptions = {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      // callback(new Error('Not allowed by CORS'));
-      res.status(400).send("Not permitted")
+      callback(new Error('Not allowed by CORS'));
+      // res.status(400).send("Not permitted")
     }
   },
     credentials: true,
@@ -39,7 +39,7 @@ mongoose.connect(process.env.CONNECT_STRING).then(() => {
 
 //  middle ware
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(cookieParser(process.env.SECRET))
 
 // routes
