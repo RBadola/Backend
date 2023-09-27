@@ -18,7 +18,7 @@ export const singleBlog = async (req, res) => {
 //  get All blog 
 export const allBlog = async (req, res) => {
   const blogs = await Blog.find().populate("author","name").sort({ createdAt: -1 })
-  res.status(200).send(blogs)
+  res.status(200).send(req)
 }
 
 // get comments
