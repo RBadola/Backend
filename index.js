@@ -39,7 +39,7 @@ mongoose.connect(process.env.CONNECT_STRING).then(() => {
 
 //  middle ware
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(cookieParser(process.env.SECRET))
 
 // routes
