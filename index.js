@@ -14,7 +14,7 @@ const app = express()
 //  env file
 dotenv.config()
 
-const allowedOrigins = ['https://writeon-4e1e7.web.app','https://writeon-4e1e7.firebaseapp.com'];
+const allowedOrigins = ['http://localhost:5173','https://writeon-4e1e7.web.app','https://writeon-4e1e7.firebaseapp.com'];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -39,7 +39,7 @@ mongoose.connect(process.env.CONNECT_STRING).then(() => {
 
 //  middle ware
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(cookieParser(process.env.SECRET))
 
 // routes
